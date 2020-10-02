@@ -4,6 +4,8 @@ import { ApolloProvider } from "react-apollo";
 
 import Landing from "./components/Landing/Landing";
 import Header from "./components/Header/Header";
+//temp for testing
+import ProjectPage from "./components/ProjectPage/ProjectPage";
 
 import "./App.css";
 
@@ -13,8 +15,9 @@ const client = new ApolloClient({
 
 const App = () => (
   <ApolloProvider client={client}>
-    <Header/>
+    <Header />
     <Landing />
+    <ProjectPage />
   </ApolloProvider>
 );
 
