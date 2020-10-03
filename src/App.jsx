@@ -1,6 +1,7 @@
 import React from "react";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 import Landing from "./components/Landing/Landing";
 import Header from "./components/Header/Header";
@@ -15,9 +16,17 @@ const client = new ApolloClient({
 
 const App = () => (
   <ApolloProvider client={client}>
-    <Header />
-    <Landing />
-    <ProjectPage />
+    <Router>
+      <Header />
+      <Switch>
+        <Route exact path="/">
+          <Landing />
+        </Route>
+        <Route path="/:projectId">
+          <ProjectPage />
+        </Route>
+      </Switch>
+    </Router>
   </ApolloProvider>
 );
 
