@@ -1,6 +1,7 @@
 import React from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
+import './ProjectPage.scss'
 
 export default function ProjectPage() {
   return (
@@ -39,7 +40,8 @@ export default function ProjectPage() {
         console.log(data);
         const item = data.project;
         return (
-          <div key={item.id}>
+          <div key={item.id} className='project-page'>
+            <h1>project page</h1>
             <h1>{item.projectName}</h1>
             <h3>{item.shortDescription}</h3>
             <p>{item.projectDuration}</p>

@@ -1,6 +1,7 @@
 import React from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
+import './ProjectCards.scss'
 
 export default function ProjectCards() {
   return (
@@ -38,7 +39,8 @@ export default function ProjectCards() {
             <div>
               {data.projects.map((item) => {
                 return (
-                  <div key={item.id}>
+                  <div key={item.id} className='project-card'>
+                    <h1>project card</h1>
                     <h1>{item.projectName}</h1>
                     <h3>{item.shortDescription}</h3>
                     <p>{item.projectDuration}</p>
