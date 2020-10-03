@@ -8,6 +8,9 @@ export default function Header() {
       <Link to="/">
         <h3>HOME</h3>
       </Link>
+      <Link to="/resume">
+        <h3>RESUME</h3>
+      </Link>
     </div>
   );
 }

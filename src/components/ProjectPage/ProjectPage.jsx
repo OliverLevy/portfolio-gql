@@ -1,14 +1,15 @@
 import React from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
-import './ProjectPage.scss'
+import "./ProjectPage.scss";
 
-export default function ProjectPage() {
+export default function ProjectPage(props) {
+  const projectId = props.match.params.projectId;
   return (
     <Query
       query={gql`
         {
-          project(where: { id: "ckfsst7lc17xl0178msbipofg" }) {
+          project(where: { id: "${projectId}" }) {
             id
             html
             expressJs
@@ -37,10 +38,11 @@ export default function ProjectPage() {
       {({ loading, error, data }) => {
         if (loading) return <h1>loading</h1>;
         if (error) return <h1>error :(</h1>;
-        console.log(data);
+
+        // console.log(data);
         const item = data.project;
         return (
-          <div key={item.id} className='project-page'>
+          <div key={item.id} className="project-page">
             <h1>project page</h1>
             <h1>{item.projectName}</h1>
             <h3>{item.shortDescription}</h3>
@@ -62,10 +64,7 @@ export default function ProjectPage() {
               item.galleryImages.map((img) => {
                 return (
                   <div key={img.id}>
-                    <img
-                      src={img.url}
-                      alt={`${item.projectName}`}
-                    />
+                    <img src={img.url} alt={`${item.projectName}`} />
                   </div>
                 );
               })}
